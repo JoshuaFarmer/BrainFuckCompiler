@@ -65,6 +65,9 @@ int main(int c, char ** v)
 				fprintf(ft, "\tMOV BX,WORD[ES:SI]\n");
 				fprintf(ft, "\tJMP BX\n");
 				break;
+			case 'J': // program pos
+				fprintf(ft, "\tMOV WORD[ES:SI],$\n");
+				break;
 			case 'P':
 				fprintf(ft, "\tMOV WORD[ES:SI],SI\n");
 				break;
