@@ -74,6 +74,17 @@ int main(int c, char ** v)
 			case 'p':
 				fprintf(ft, "\tMOV SI,WORD[ES:SI]\n");
 				break;
+			case '"':
+				{
+					char c=0;
+					fputc('\t',ft);
+					while ((c = fgetc(fp)) && c != EOF && c != '"')
+					{
+						fputc(c,ft);
+					}
+					fputc('\n',ft);
+				}
+				break;
 			default:
 				if (x > 32)
 					printf("? : %c\n",x);
