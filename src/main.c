@@ -44,16 +44,6 @@ int main(int c, char ** v)
 			case ',':
 				fprintf(ft, "\tCALL GET\n");
 				break;
-			case 'j':
-				fprintf(ft, "\tMOV BX,WORD[ES:SI]\n");
-				fprintf(ft, "\tJMP BX\n");
-				break;
-			case 'P':
-				fprintf(ft, "\tMOV WORD[ES:SI],SI\n");
-				break;
-			case 'p':
-				fprintf(ft, "\tMOV SI,WORD[ES:SI]\n");
-				break;
 			case '[':
 				if (stack_pointer < MAX_STACK_SIZE)
 				{
@@ -69,6 +59,17 @@ int main(int c, char ** v)
 					fprintf(ft, "\tCMP BYTE[ES:SI], 0\n\tJNZ LOOP_%d\n", loop_start_pos);
 					fprintf(ft, "SKIP_LOOP_%d:\n", loop_start_pos); // Label for skipping the loop
 				}
+				break;
+			/* Extensions */
+			case 'j':
+				fprintf(ft, "\tMOV BX,WORD[ES:SI]\n");
+				fprintf(ft, "\tJMP BX\n");
+				break;
+			case 'P':
+				fprintf(ft, "\tMOV WORD[ES:SI],SI\n");
+				break;
+			case 'p':
+				fprintf(ft, "\tMOV SI,WORD[ES:SI]\n");
 				break;
 			default:
 				if (x > 32)
